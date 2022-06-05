@@ -1,6 +1,6 @@
 <%= form_with do |form| %>
   <div data-type="select-field" class="select is-info is-medium">
-    <%= form.select :departure_airport, [ "Chicago", "New Mexico", "Dantas", "New York", "New Jersey" ] %>
+    <%= form.collection_select :departure_airport, Airport.order(:city), :short_name, :city %>
   </div>
 
   <div data-type="select-field" class="select is-info is-medium">
