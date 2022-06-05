@@ -1,0 +1,17 @@
+<%= form_with do |form| %>
+  <div data-type="select-field" class="select is-info is-medium">
+    <%= form.select :departure_airport, [ "Chicago", "New Mexico", "Dantas", "New York", "New Jersey" ] %>
+  </div>
+
+  <div data-type="select-field" class="select is-info is-medium">
+    <%= form.select :arrival_airport, [ "North Carolina", "South Carolina" ] %>
+  </div>
+
+  <div data-type="select-field" class="select is-info is-medium">
+    <%= form.select :departure_time, [ "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "12:00 PM" ] %>
+  </div>
+
+  <div data-type="select-field" class="select is-info is-medium">
+    <%= form.select :passengers_number, [ 1, 2, 3, 4 ] %>
+  </div>
+<% end %>
