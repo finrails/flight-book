@@ -1,0 +1,53 @@
+<div class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-flex is-justify-content-center">
+          <%= form_with html: { class: 'box' } do |form| %>
+
+            <div class="field-group p-1">
+              <div class="field is-inline-block mr-4">
+                <%= form.label :departure_airport, class: 'label' %>
+                <div class="control">
+                  <div class="select">
+                    <%= form.collection_select :departure_airport, Airport.order(:city), :short_name, :city %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field is-inline-block">
+                <%= form.label :arrival_airport, class: 'label' %>
+                <div class="control">
+                  <div class="select">
+                    <%= form.select :arrival_airport, [ "North Carolina", "South Carolina" ] %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group p-1">
+              <div class="field is-inline-block mr-4">
+                <%= form.label :departure_time, class: 'label' %>
+                <div class="control">
+                  <div class="select">
+                    <%= form.select :departure_time, [ "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "12:00 PM" ], class: 'is-select' %>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-inline-block ml-4">
+                <%= form.label :passengers_number, class: 'label' %>
+                <div class="control">
+                  <div class="select">
+                    <%= form.select :passengers_number, [ 1, 2, 3, 4 ] %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <%= form.submit 'Search it', class: 'button is-primary m-1' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
