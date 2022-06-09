@@ -8,16 +8,15 @@
 
 CITY_NAMES = ["New York", "California", "Texas", "San Diego", "Dallas", "Detroit", "Washington", "Brooklyn"].freeze
 SHORT_CITY_NAMES = ["NYC", "CFC", "TXC", "SDC", "DLC", "DTC", "WSC", "BKC"]
-AIRPORTS_IDS = [1, 2, 3, 4, 5, 6, 7, 8].freeze
+DEPARTURE_DATE = %w[ 2022-06-10 2022-06-11 2022-06-12 2022-06-13 2022-06-14 2022-06-15 2022-06-16 2022-06-17 ]
+ARRIVAL_DATE = %w[ 2022-06-11 2022-06-12 2022-06-13 2022-06-14 2022-06-15 2022-06-16 2022-06-17 2022-06-18 ]
 
 CITY_NAMES.each_with_index do |city_name, index|
   Airport.create(city: city_name, short_name: SHORT_CITY_NAMES[index])
 end
 
-AIRPORTS_IDS.each do |airport_id|
-  break if airport_id == AIRPORTS_IDS.size
-
+CITY_NAMES.size.times do |airport_id|
   unless Flight.where(departure_airport_id: airport_id).exists? || Flight.where(arrival_airport_id: airport_id).exists?
-    Flight.create(departure_airport_id: airport_id, arrival_airport_id: airport_id + 1, start_datetime: Time.local(2022, 06, 3, 12), flight_duration: Time.now)
+    Flight.create(departure_airport_id: airport_id, arrival_airport_id: airport_id + 1, start_datetime: DEPARTURE_DATE[airport_id], flight_duration: ARRIVAL_DATE[airport_id])
   end
 end

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-flex is-justify-content-center">
-          <%= form_with html: { class: 'box' } do |form| %>
+          <%= form_with url: root_path, method: :get, html: { class: 'box' } do |form| %>
 
             <div class="field-group p-1">
               <div class="field is-inline-block mr-4">
@@ -19,7 +19,7 @@
                 <%= form.label :arrival_airport, class: 'label' %>
                 <div class="control">
                   <div class="select">
-                    <%= form.select :arrival_airport, [ "North Carolina", "South Carolina" ] %>
+                    <%= form.collection_select :arrival_airport, Airport.order(:city), :short_name, :city %>
                   </div>
                 </div>
               </div>
@@ -30,7 +30,7 @@
                 <%= form.label :departure_time, class: 'label' %>
                 <div class="control">
                   <div class="select">
-                    <%= form.select :departure_time, [ "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "12:00 PM" ], class: 'is-select' %>
+                    <%= form.collection_select :departure_time, Flight.order(:id), :arrival_airport_id, :start_datetime  %>
                   </div>
                 </div>
               </div>
