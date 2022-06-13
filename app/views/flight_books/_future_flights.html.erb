@@ -1,0 +1,6 @@
+<p>
+  <% future_flights.each do |future_flight| %>
+    <strong>Departure: <%= future_flight.departure_airport.city %></strong>
+    <strong>Arrival: <%= future_flight.arrival_airport.city %></strong><br/>
+  <% end %>
+</p>
