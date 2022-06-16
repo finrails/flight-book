@@ -5,7 +5,7 @@
 
         <%= render partial: 'flight_form' %>
 
-        <% if @future_flights %>
+        <% unless @future_flights.nil? || @future_flights.empty? %>
           <%= render partial: 'future_flights', locals: { future_flights: @future_flights } %>
         <% end %>
 

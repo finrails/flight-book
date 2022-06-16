@@ -1,3 +1,4 @@
+<% passengers_number = params[:flight][:passengers_number].to_s %>
 <div class="column">
   <% future_flights.each do |future_flight| %>
   <div class="card">
@@ -16,8 +17,12 @@
               <p class="content">Arrival: <%= future_flight.flight_duration %></p>
             </div>
 
-    <footer class="card-footer">
-      <%= link_to 'Buy it', root_path, class: 'card-footer-item' %>
+    <footer class="card-footer is-flex is-justify-content-center">
+      <%= form_with method: :get do |f| %>
+        <%= hidden_field_tag :total_passengers, passengers_number %>
+        <%= hidden_field_tag :flight_id, future_flight.id %>
+        <%= f.submit 'Buy it', class: 'button is-link is-inverted' %>
+      <% end %>
     </footer>
   </div>
   <% end %>
