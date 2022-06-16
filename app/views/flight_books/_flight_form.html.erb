@@ -22,7 +22,7 @@
       <%= form.label :departure_time, class: 'label' %>
       <div class="control">
         <div class="select">
-          <%= form.collection_select :departure_time, Flight.order(:id), :start_datetime, :start_datetime  %>
+          <%= form.select :departure_time, Flight.order(:start_datetime).pluck(:start_datetime).uniq %>
         </div>
       </div>
     </div>

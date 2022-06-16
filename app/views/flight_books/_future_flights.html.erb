@@ -18,7 +18,7 @@
             </div>
 
     <footer class="card-footer is-flex is-justify-content-center">
-      <%= form_with method: :get do |f| %>
+      <%= form_with url: new_flight_book_url, method: :get do |f| %>
         <%= hidden_field_tag :total_passengers, passengers_number %>
         <%= hidden_field_tag :flight_id, future_flight.id %>
         <%= f.submit 'Buy it', class: 'button is-link is-inverted' %>
