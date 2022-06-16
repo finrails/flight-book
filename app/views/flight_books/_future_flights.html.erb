@@ -1,6 +1,24 @@
-<p>
+<div class="column">
   <% future_flights.each do |future_flight| %>
-    <strong>Departure: <%= future_flight.departure_airport.city %></strong>
-    <strong>Arrival: <%= future_flight.arrival_airport.city %></strong><br/>
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title"><%= future_flight.start_datetime %></p>
+    </header>
+      <div class="card-image">
+        <figure class="image is-2by1">
+        <%= image_tag 'airplane.jpg' %>
+        </figure>
+      </div>
+            <div class="card-content">
+              <p class="content">From: <%= future_flight.departure_airport.city %></p>
+              <p class="content">To: <%= future_flight.arrival_airport.city %></p>
+              <p class="content">Ticket Price: 200 $</p>
+              <p class="content">Arrival: <%= future_flight.flight_duration %></p>
+            </div>
+
+    <footer class="card-footer">
+      <%= link_to 'Buy it', root_path, class: 'card-footer-item' %>
+    </footer>
+  </div>
   <% end %>
-</p>
+</div>

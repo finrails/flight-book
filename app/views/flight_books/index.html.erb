@@ -1,52 +1,14 @@
 <div class="hero is-fullheight">
   <div class="hero-body">
     <div class="container">
-      <div class="columns">
-        <div class="column is-flex is-justify-content-center">
-          <%= form_with url: root_path, model: @flight, method: :get, html: { class: 'box' } do |form| %>
+      <div class="columns is-centered">
 
-            <div class="field-group p-1">
-              <div class="field is-inline-block mr-4">
-                <%= form.label :departure_airport, class: 'label' %>
-                <div class="control">
-                  <div class="select">
-                    <%= form.collection_select :departure_airport, Airport.order(:city), :id, :city %>
-                  </div>
-                </div>
-              </div>
+        <%= render partial: 'flight_form' %>
 
-              <div class="field is-inline-block">
-                <%= form.label :arrival_airport, class: 'label' %>
-                <div class="control">
-                  <div class="select">
-                    <%= form.collection_select(:arrival_airport, Airport.order(:city), :id, :city) %>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <% if @future_flights %>
+          <%= render partial: 'future_flights', locals: { future_flights: @future_flights } %>
+        <% end %>
 
-            <div class="field-group p-1">
-              <div class="field is-inline-block mr-4">
-                <%= form.label :departure_time, class: 'label' %>
-                <div class="control">
-                  <div class="select">
-                    <%= form.collection_select :departure_time, Flight.order(:id), :start_datetime, :start_datetime  %>
-                  </div>
-                </div>
-              </div>
-              <div class="field is-inline-block ml-4">
-                <%= form.label :passengers_number, class: 'label' %>
-                <div class="control">
-                  <div class="select">
-                    <%= form.select :passengers_number, [ 1, 2, 3, 4 ] %>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <%= form.submit 'Search it', class: 'button is-primary m-1' %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
