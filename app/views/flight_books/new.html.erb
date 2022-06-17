@@ -1,0 +1,30 @@
+<% current_passenger = 1 %>
+<div class="hero is-fullheight">
+  <div class="columns is-centered">
+  <div class="container is-flex is-align-items-center is-justify-content-center">
+    <div class="column is-half">
+      <%= form_with model: @booking do |booking_form| %>
+
+        <%= booking_form.fields_for :passengers do |passenger_fields| %>
+          <article class="my-5">
+            <p>Passenger: <%= current_passenger %></p>
+            <div class="field">
+              <%= passenger_fields.label :name, class: 'label' %>
+              <%= passenger_fields.text_field :name, class: 'input' %>
+            </div>
+
+            <div class="field">
+              <%= passenger_fields.label :email, class: 'label' %>
+              <%= passenger_fields.text_field :email, class: 'input' %>
+            </div>
+          </article>
+          <% current_passenger += 1 %>
+        <% end %>
+
+        <%= booking_form.hidden_field :flight_id, value: params[:flight_id] %>
+        <%= booking_form.submit 'Buy it!', class: 'button is-success' %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
