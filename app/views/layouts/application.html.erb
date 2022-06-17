@@ -11,6 +11,30 @@
   </head>
 
   <body>
+
+    <% if flash[:alert] %>
+      <article class="message is-warning" data-controller="message">
+        <div class="message-header">
+          <p>Alert</p>
+          <button class="delete" aria-label="delete" data-action="message#close"></button>
+        </div>
+        <div class="message-body">
+          <%= flash[:alert] %>
+        </div>
+      </article>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <article class="message is-info" data-controller="message">
+        <div class="message-header">
+          <p>Information</p>
+          <button class="delete" aria-label="delete" data-action="message#close"></button>
+        </div>
+        <div class="message-body">
+          <%= flash[:notice] %>
+        </div>
+      </article>
+    <% end %>
     <%= yield %>
   </body>
 </html>
