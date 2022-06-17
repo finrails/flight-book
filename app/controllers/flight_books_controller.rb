@@ -1,5 +1,11 @@
 class FlightBooksController < ApplicationController
   def new
+    @booking = Booking.new
+
+    @selected_flight = Flight.find(params[:flight_id])
+    @total_passengers_count = params[:total_passengers].to_i
+
+    @total_passengers_count.times { @booking.passengers.build }
   end
 
   def index
